@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benjamin Calméjane – CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E07820;
+      --dark: #111111;
+      --body: #1a1a1a;
+      --muted: #555555;
+      --lighter: #888888;
+      --border: #e0e0e0;
+      --bg: #f0efed;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      font-size: 13.5px;
+      line-height: 1.58;
+      padding: 48px 20px;
+    }
+
+    /* ════════════════════════════════════
+       PAGE CONTAINER
+    ════════════════════════════════════ */
+    .cv-page {
+      background: #fff;
+      max-width: 790px;
+      margin: 0 auto;
+      padding: 52px 56px 64px;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.09);
+    }
+
+    /* ════════════════════════════════════
+       HEADER
+    ════════════════════════════════════ */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .cv-name {
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .cv-subtitle {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .cv-subtitle .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin: 0 8px;
+    }
+
+    .cv-contact {
+      text-align: right;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .cv-contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ════════════════════════════════════
+       FILTER BAR
+    ════════════════════════════════════ */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      padding: 13px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .filter-label {
+      font-size: 10.5px;
+      color: var(--lighter);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      margin-right: 3px;
+    }
+
+    .filter-btn {
+      padding: 4px 13px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: border-color 0.12s, color 0.12s, background 0.12s;
+      line-height: 1.6;
+      outline: none;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .filter-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .filter-btn.all-btn:hover {
+      border-color: var(--dark);
+      color: var(--dark);
+    }
+
+    .filter-btn.all-btn.active {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #fff;
+    }
+
+    /* ════════════════════════════════════
+       CV BODY SECTIONS
+    ════════════════════════════════════ */
+    .cv-section {
+      display: flex;
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      width: 108px;
+      flex-shrink: 0;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+      padding-top: 1px;
+    }
+
+    .section-content {
+      flex: 1;
+      border-left: 2px solid var(--orange);
+      padding-left: 26px;
+    }
+
+    /* ════════════════════════════════════
+       EXPERIENCE ENTRIES
+    ════════════════════════════════════ */
+    .employer-entry {
+      margin-bottom: 22px;
+    }
+
+    .employer-header {
+      margin-bottom: 7px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .year {
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    .company {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .role {
+      color: var(--dark);
+      font-weight: 400;
+    }
+
+    .project-item {
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--body);
+    }
+
+    .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-item em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .project-item strong {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* ════════════════════════════════════
+       EDUCATION
+    ════════════════════════════════════ */
+    .edu-entry {
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .edu-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-year {
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    /* ════════════════════════════════════
+       SKILLS
+    ════════════════════════════════════ */
+    .skill-row {
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .skill-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* ════════════════════════════════════
+       FILTER STATE
+    ════════════════════════════════════ */
+    .hidden {
+      display: none !important;
+    }
+
+    .no-match-msg {
+      color: var(--lighter);
+      font-style: italic;
+      font-size: 12.5px;
+      padding: 4px 0;
+      display: none;
+    }
+
+    .no-match-msg.visible {
+      display: block;
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════ */
+    @media (max-width: 620px) {
+      body { padding: 0; }
+      .cv-page { padding: 28px 22px 40px; box-shadow: none; }
+      .cv-header { flex-direction: column; gap: 14px; }
+      .cv-contact { text-align: left; }
+      .section-label { width: 80px; font-size: 11.5px; }
+      .section-content { padding-left: 18px; }
+      .cv-name { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="cv-page">
+
+  <!-- ════════════ HEADER ════════════ -->
+  <header class="cv-header">
+    <div>
+      <div class="cv-name">Benjamin Calméjane</div>
+      <div class="cv-subtitle">
+        Digital Product Designer
+        <span class="dot"></span>
+        Paris, France
+      </div>
+    </div>
+    <div class="cv-contact">
+      <div><a href="mailto:benjamin.calmejane@gmail.com">benjamin.calmejane@gmail.com</a></div>
+      <div><a href="linkedin.com/in/ben-calmejane" target="_blank">linkedin.com/in/ben-calmejane</a> </div>
+      <div><a href="ben-calmejane.com" target="_blank">ben-calmejane.com</a> </div>
+    </div>
+  </header>
+
+  <!-- ════════════ FILTER BAR ════════════ -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter&thinsp;:</span>
+    <button class="filter-btn all-btn active" data-filter="all">Display all</button>
+    <button class="filter-btn" data-filter="b2c">B2C</button>
+    <button class="filter-btn" data-filter="b2b">B2B</button>
+    <button class="filter-btn" data-filter="design-systeme">Design System</button>
+    <button class="filter-btn" data-filter="entrepreneurial">Entrepreneurial</button>
+  </div>
+
+  <!-- ════════════ EXPERIENCE ════════════ -->
+  <div class="cv-section">
+    <div class="section-label">Experience</div>
+    <div class="section-content">
+
+      <!-- LEDGER ─────────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2022 – 2025&nbsp;</span><strong class="company">Ledger</strong><span class="role"> Senior Product Designer</span>
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Products: <strong>Ledger Enterprise</strong> — Update and maintain key interactions logics for the Ledger Vault platform. Run bi-weekly design workshops with cross-disciplinary stakeholders.
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Product: <strong>Ledger Tradelink</strong> — Design UX and UI from scratch.
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Product: <strong>Vault mobile app</strong> — Design UX and UI from scratch.
+        </div>
+      </div>
+
+      <!-- GANDI.NET ───────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2020 – 2022&nbsp;</span><strong class="company">Gandi.net</strong><span class="role"> Product designer</span>
+        </div>
+        <div class="project-item" data-cats="design-systeme">
+          <em>Facilitate the design-system usage (developer experience) across all products and improve end-user experience for cloud services, email management and products bundle buy.</em>
+        </div>
+        <div class="project-item" data-cats="b2c">
+          Product: <strong>GandiCloud VPS</strong> — Design the UI for a new product launch, improving a navigation logic used in other Gandi's products. From user on-boarding to billing via SSH Key management. 600+ active virtual machines created since launch.
+        </div>
+        <div class="project-item" data-cats="b2c">
+          Product: <strong>Simple Hosting</strong> — Revamp the UI and app spatialization, adapting each section to the Design System. Refined personas to prioritise features by user profile. Simpler UI and easier transitions between Gandi's products.
+        </div>
+        <div class="project-item" data-cats="b2c">
+          Product: <strong>WordPress 1 Click</strong> — Benchmarked direct competitors and redesigned the user journey for creating a WordPress site with a domain name. Enhanced shop steps per user profile. CSS-only SVG animations during installation steps. Better automation experience than competitors.
+        </div>
+      </div>
+
+      <!-- CONSENSYS ───────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2018 – 2020&nbsp;</span><strong class="company">ConsenSys</strong><span class="role"> UX, UI & Visual designer</span>
+        </div>
+        <div class="project-item" data-cats="b2b">
+          <em>Driving the Ethereum blockchain protocol to B2B & mass-market adoption.</em>
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Client: <strong>LVMH</strong> — Workshops with the client and tech-partners to assess use cases for a luxury goods tracking + secondary market service.
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Product: <strong>CodeFi Assets</strong> — Design a tool to digitize securities. Based on real use-cases, heeding the evolutive European regulation.
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Client: <strong>komgo</strong> — With 3 designers between 5 scrum-teams across Europe, delivering a global commodity trade finance network.
+        </div>
+        <div class="project-item" data-cats="b2b">
+          Product: <strong>Pegasys Orchestrate</strong> — Workshops with product managers and tech leads to build an interactive product demo from CLI to GUI.
+        </div>
+      </div>
+
+      <!-- PLÖY! ──────────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2016 – 2018&nbsp;</span><strong class="company">Plöy!</strong><span class="role"> Co-founder of the interaction designers collective</span>
+        </div>
+        <div class="project-item" data-cats="entrepreneurial">
+          Working with various clients on web and graphic design.
+        </div>
+      </div>
+
+      <!-- NODESIGN ───────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2015&nbsp;</span><strong class="company">Nodesign</strong><span class="role"> UX – UI designer in agency</span>
+        </div>
+        <div class="project-item" data-cats="b2c">
+          Client: <strong>Parrot</strong> — Proof of concept for the "follow me" functionality of Parrot drones on Apple Watch. Interaction design and UI animations.
+        </div>
+        <div class="project-item" data-cats="b2c">
+          Client: <strong>France Connect</strong> — Improved UI, UX and API architecture for the French cross-platform public services authentication service.
+        </div>
+        <div class="project-item" data-cats="">
+          Clients: Cap Digital, Electrosound exhibition.
+        </div>
+      </div>
+
+      <!-- NOIDD.COM ───────────────────── -->
+      <div class="employer-entry">
+        <div class="employer-header">
+          <span class="year">2014 – 2018&nbsp;</span><strong class="company">Noidd.com</strong><span class="role"> Co-founder & Designer of the Web App</span>
+        </div>
+        <div class="project-item" data-cats="b2c entrepreneurial">
+          Web-app for sharing and discovering music and videos live. Distributed in bars and event venues as a connected jukebox. Experimented with online "battle" events between users.
+        </div>
+      </div>
+
+      <div class="no-match-msg" id="exp-no-match">
+        Aucune expérience ne correspond à ces filtres.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ EDUCATION ════════════ -->
+  <div class="cv-section">
+    <div class="section-label">Education</div>
+    <div class="section-content">
+      <div class="edu-entry">
+        <span class="edu-year">2018</span>&ensp;<strong>Dev Bootcamp:</strong> The Hacking Project, Paris<br>
+        <span style="color:var(--muted)">Ruby, Ruby on Rails, HTML, SCSS, Javascript.</span>
+      </div>
+      <div class="edu-entry">
+        <span class="edu-year">2016</span>&ensp;<strong>Master UTC:</strong> University of Technology of Compiègne, France<br>
+        <span style="color:var(--muted)">Innovation & complexity, section UX-UI Design</span>
+      </div>
+      <div class="edu-entry">
+        <span class="edu-year">2015</span>&ensp;<strong>Master ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
+        <span style="color:var(--muted)">Graphic Design, Digital Design Major</span>
+      </div>
+      <div class="edu-entry">
+        <span class="edu-year">2013</span>&ensp;<strong>Bachelor ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
+        <span style="color:var(--muted)">Jury's mention for 'diversity of research and original propositions'</span>
+      </div>
+      <div class="edu-entry">
+        <span class="edu-year">2012</span>&ensp;<strong>Erasmus programme</strong> HGB Academy of Visual Arts, Leipzig, Germany
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ SKILLS ════════════ -->
+  <div class="cv-section" style="margin-bottom: 0">
+    <div class="section-label">Skills</div>
+    <div class="section-content">
+      <div class="skill-row">
+        <span class="skill-label">Software</span>&ensp;Figma Suite, Adobe Suite, Zeplin, Mural, Miro, Gitlab, VS Code, P5js, Arduino, Photography, Paper, Pen.
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Soft skills</span>&ensp;Emotional intelligence, workshops facilitation, experience with remote work in the pre-pandemic era.
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>&ensp;French (native), English (fluent), Spanish (beginner), learning Hebrew
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const activeFilters = new Set();
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const allBtn = document.querySelector('.all-btn');
+  const noMatchMsg = document.getElementById('exp-no-match');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      if (filter === 'all') {
+        activeFilters.clear();
+        filterBtns.forEach(b => b.classList.remove('active'));
+        allBtn.classList.add('active');
+      } else {
+        if (btn.classList.contains('active')) {
+          btn.classList.remove('active');
+          activeFilters.delete(filter);
+          if (activeFilters.size === 0) {
+            allBtn.classList.add('active');
+          }
+        } else {
+          allBtn.classList.remove('active');
+          btn.classList.add('active');
+          activeFilters.add(filter);
+        }
+      }
+
+      applyFilters();
+    });
+  });
+
+  function applyFilters() {
+    const filters = [...activeFilters];
+
+    // No active filter → show everything
+    if (filters.length === 0) {
+      document.querySelectorAll('.project-item, .employer-entry').forEach(el => {
+        el.classList.remove('hidden');
+      });
+      noMatchMsg.classList.remove('visible');
+      return;
+    }
+
+    // Step 1: show/hide individual project items
+    document.querySelectorAll('.project-item').forEach(item => {
+      const cats = (item.dataset.cats || '').split(' ').filter(Boolean);
+      const matches = cats.length > 0 && cats.some(c => filters.includes(c));
+      item.classList.toggle('hidden', !matches);
+    });
+
+    // Step 2: show/hide employer entries based on their visible children
+    let anyVisible = false;
+    document.querySelectorAll('.employer-entry').forEach(entry => {
+      const hasVisible = entry.querySelector('.project-item:not(.hidden)') !== null;
+      entry.classList.toggle('hidden', !hasVisible);
+      if (hasVisible) anyVisible = true;
+    });
+
+    noMatchMsg.classList.toggle('visible', !anyVisible);
+  }
+</script>
+</body>
+</html>
