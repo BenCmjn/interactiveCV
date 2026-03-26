@@ -190,7 +190,7 @@
       background: #fff;
       z-index: 20;
       padding-bottom: 4px;
-      width: 108px;
+      padding-top: 8px;
     }
 
     .experience-entries {
@@ -222,7 +222,7 @@
       display: flex;
       align-items: baseline;
       position: sticky;
-      top: 0;
+      top: 33px;
       background: #fff;
       z-index: 10;
       padding-top: 8px;
@@ -237,11 +237,13 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 1.4;
+      text-align: right;
+      padding-right: 24px;
     }
 
     .employer-title {
       flex: 1;
-      padding-left: 28px;
+      padding-left: 24px;
       font-size: 14px;
       line-height: 1.4;
     }
@@ -258,7 +260,7 @@
 
     .employer-body {
       margin-left: 110px;
-      padding-left: 26px;
+      padding-left: 24px;
     }
 
     .project-item {
@@ -282,21 +284,64 @@
     }
 
     /* ════════════════════════════════════
-       EDUCATION
+       EDUCATION (same layout as Experience)
     ════════════════════════════════════ */
+    .education-section {
+      margin-bottom: 30px;
+    }
+
+    .section-label-static {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+      margin-bottom: 14px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 20;
+      padding-bottom: 4px;
+      padding-top: 8px;
+    }
+
+    .education-entries {
+      position: relative;
+    }
+
+    .education-entries::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--orange);
+      pointer-events: none;
+    }
+
     .edu-entry {
-      margin-bottom: 12px;
+      display: flex;
+      align-items: baseline;
+      padding-bottom: 12px;
       font-size: 13px;
       line-height: 1.55;
     }
 
     .edu-entry:last-child {
-      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .edu-year {
+      width: 108px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 24px;
       color: var(--orange);
       font-weight: 500;
+    }
+
+    .edu-content {
+      flex: 1;
+      padding-left: 24px;
     }
 
     /* ════════════════════════════════════
@@ -364,8 +409,8 @@
     </div>
     <div class="cv-contact">
       <div><a href="mailto:benjamin.calmejane@gmail.com">benjamin.calmejane@gmail.com</a></div>
-      <div><a href="linkedin.com/in/ben-calmejane" target="_blank">linkedin.com/in/ben-calmejane</a> </div>
-      <div><a href="ben-calmejane.com" target="_blank">ben-calmejane.com</a> </div>
+      <div><a href="http://www.linkedin.com/in/ben-calmejane" target="_blank">linkedin.com/in/ben-calmejane</a> </div>
+      <div><a href="http://www.ben-calmejane.com" target="_blank">ben-calmejane.com</a> </div>
     </div>
   </header>
 
@@ -381,7 +426,7 @@
 
   <!-- ════════════ EXPERIENCE ════════════ -->
   <div class="experience-section">
-    <div class="experience-label">Experience</div>
+    <div class="experience-label">Experiences</div>
     <div class="experience-entries">
 
     <!-- LEDGER ─────────────────────── -->
@@ -414,7 +459,7 @@
           <em>Facilitate the design-system usage (developer experience) across all products and improve end-user experience for cloud services, email management and products bundle buy.</em>
         </div>
         <div class="project-item" data-cats="b2c">
-          Product: <strong>GandiCloud VPS</strong> — Design the UI for a new product launch, improving a navigation logic used in other Gandi's products. From user on-boarding to billing via SSH Key management. 600+ active virtual machines created since launch.
+          Product: <strong>GandiCloud VPS</strong> — Design the UI for a new product launch, improving a navigation logic used in other Gandi's products. From user on-boarding to billing via SSH Key management. 600 virtual machines created per month since launch.
         </div>
         <div class="project-item" data-cats="b2c">
           Product: <strong>Simple Hosting</strong> — Revamp the UI and app spatialization, adapting each section to the Design System. Refined personas to prioritise features by user profile. Simpler UI and easier transitions between Gandi's products.
@@ -435,7 +480,7 @@
         <div class="project-item" data-cats="b2b">
           <em>Driving the Ethereum blockchain protocol to B2B & mass-market adoption.</em>
         </div>
-        <div class="project-item" data-cats="b2b">
+        <div class="project-item" data-cats="b2c">
           Client: <strong>LVMH</strong> — Workshops with the client and tech-partners to assess use cases for a luxury goods tracking + secondary market service.
         </div>
         <div class="project-item" data-cats="b2b">
@@ -502,27 +547,36 @@
   </div>
 
   <!-- ════════════ EDUCATION ════════════ -->
-  <div class="cv-section">
-    <div class="section-label">Education</div>
-    <div class="section-content">
+  <div class="education-section">
+    <div class="section-label-static">Education</div>
+    <div class="education-entries">
       <div class="edu-entry">
-        <span class="edu-year">2018</span>&ensp;<strong>Dev Bootcamp:</strong> The Hacking Project, Paris<br>
-        <span style="color:var(--muted)">Ruby, Ruby on Rails, HTML, SCSS, Javascript.</span>
+        <span class="edu-year">2018</span>
+        <div class="edu-content"><strong>Dev Bootcamp:</strong> The Hacking Project, Paris<br>
+          <span style="color:var(--muted)">Ruby, Ruby on Rails, HTML, SCSS, Javascript.</span>
+        </div>
       </div>
       <div class="edu-entry">
-        <span class="edu-year">2016</span>&ensp;<strong>Master UTC:</strong> University of Technology of Compiègne, France<br>
-        <span style="color:var(--muted)">Innovation & complexity, section UX-UI Design</span>
+        <span class="edu-year">2016</span>
+        <div class="edu-content"><strong>Master UTC:</strong> University of Technology of Compiègne, France<br>
+          <span style="color:var(--muted)">Innovation & complexity, section UX-UI Design</span>
+        </div>
       </div>
       <div class="edu-entry">
-        <span class="edu-year">2015</span>&ensp;<strong>Master ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
-        <span style="color:var(--muted)">Graphic Design, Digital Design Major</span>
+        <span class="edu-year">2015</span>
+        <div class="edu-content"><strong>Master ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
+          <span style="color:var(--muted)">Graphic Design, Digital Design Major</span>
+        </div>
       </div>
       <div class="edu-entry">
-        <span class="edu-year">2013</span>&ensp;<strong>Bachelor ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
-        <span style="color:var(--muted)">Jury's mention for 'diversity of research and original propositions'</span>
+        <span class="edu-year">2013</span>
+        <div class="edu-content"><strong>Bachelor ÉSAD:</strong> Superior School of Art and Design, Amiens, France<br>
+          <span style="color:var(--muted)">Jury's mention for 'diversity of research and original propositions'</span>
+        </div>
       </div>
       <div class="edu-entry">
-        <span class="edu-year">2012</span>&ensp;<strong>Erasmus programme</strong> HGB Academy of Visual Arts, Leipzig, Germany
+        <span class="edu-year">2012</span>
+        <div class="edu-content"><strong>Erasmus programme</strong> HGB Academy of Visual Arts, Leipzig, Germany</div>
       </div>
     </div>
   </div>
@@ -532,7 +586,7 @@
     <div class="section-label">Skills</div>
     <div class="section-content">
       <div class="skill-row">
-        <span class="skill-label">Software</span>&ensp;Figma Suite, Adobe Suite, Zeplin, Mural, Miro, Gitlab, VS Code, P5js, Arduino, Photography, Paper, Pen.
+        <span class="skill-label">Softwares</span>&ensp;Figma Suite, Adobe Suite, Zeplin, Miro, Git (Github, Gitlab), VS Code, P5js, Vibe-Coding, Arduino, Photography, Paper, Pen.
       </div>
       <div class="skill-row">
         <span class="skill-label">Soft skills</span>&ensp;Emotional intelligence, workshops facilitation, experience with remote work in the pre-pandemic era.
