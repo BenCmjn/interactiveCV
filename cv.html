@@ -174,21 +174,76 @@
     }
 
     /* ════════════════════════════════════
-       EXPERIENCE ENTRIES
+       EXPERIENCE SECTION (custom layout)
     ════════════════════════════════════ */
+    .experience-section {
+      margin-bottom: 30px;
+    }
+
+    .experience-label {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+      margin-bottom: 14px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 20;
+      padding-bottom: 4px;
+      width: 108px;
+    }
+
+    .experience-entries {
+      position: relative;
+    }
+
+    /* Single continuous orange line */
+    .experience-entries::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--orange);
+      z-index: 15;
+      pointer-events: none;
+    }
+
     .employer-entry {
-      margin-bottom: 22px;
+      padding-bottom: 22px;
+    }
+
+    .employer-entry:last-of-type {
+      padding-bottom: 0;
     }
 
     .employer-header {
-      margin-bottom: 7px;
+      display: flex;
+      align-items: baseline;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 10;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin-top: -8px;
+    }
+
+    .employer-year {
+      width: 108px;
+      flex-shrink: 0;
+      color: var(--orange);
+      font-weight: 500;
       font-size: 14px;
       line-height: 1.4;
     }
 
-    .year {
-      color: var(--orange);
-      font-weight: 500;
+    .employer-title {
+      flex: 1;
+      padding-left: 28px;
+      font-size: 14px;
+      line-height: 1.4;
     }
 
     .company {
@@ -199,6 +254,11 @@
     .role {
       color: var(--dark);
       font-weight: 400;
+    }
+
+    .employer-body {
+      margin-left: 110px;
+      padding-left: 26px;
     }
 
     .project-item {
@@ -320,15 +380,17 @@
   </div>
 
   <!-- ════════════ EXPERIENCE ════════════ -->
-  <div class="cv-section">
-    <div class="section-label">Experience</div>
-    <div class="section-content">
+  <div class="experience-section">
+    <div class="experience-label">Experience</div>
+    <div class="experience-entries">
 
-      <!-- LEDGER ─────────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2022 – 2025&nbsp;</span><strong class="company">Ledger</strong><span class="role"> Senior Product Designer</span>
-        </div>
+    <!-- LEDGER ─────────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2022 – 2025</span>
+        <div class="employer-title"><strong class="company">Ledger</strong> <span class="role">Senior Product Designer</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="b2b">
           Products: <strong>Ledger Enterprise</strong> — Update and maintain key interactions logics for the Ledger Vault platform. Run bi-weekly design workshops with cross-disciplinary stakeholders.
         </div>
@@ -339,12 +401,15 @@
           Product: <strong>Vault mobile app</strong> — Design UX and UI from scratch.
         </div>
       </div>
+    </div>
 
-      <!-- GANDI.NET ───────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2020 – 2022&nbsp;</span><strong class="company">Gandi.net</strong><span class="role"> Product designer</span>
-        </div>
+    <!-- GANDI.NET ───────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2020 – 2022</span>
+        <div class="employer-title"><strong class="company">Gandi.net</strong> <span class="role">Product designer</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="design-systeme">
           <em>Facilitate the design-system usage (developer experience) across all products and improve end-user experience for cloud services, email management and products bundle buy.</em>
         </div>
@@ -358,12 +423,15 @@
           Product: <strong>WordPress 1 Click</strong> — Benchmarked direct competitors and redesigned the user journey for creating a WordPress site with a domain name. Enhanced shop steps per user profile. CSS-only SVG animations during installation steps. Better automation experience than competitors.
         </div>
       </div>
+    </div>
 
-      <!-- CONSENSYS ───────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2018 – 2020&nbsp;</span><strong class="company">ConsenSys</strong><span class="role"> UX, UI & Visual designer</span>
-        </div>
+    <!-- CONSENSYS ───────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2018 – 2020</span>
+        <div class="employer-title"><strong class="company">ConsenSys</strong> <span class="role">UX, UI & Visual designer</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="b2b">
           <em>Driving the Ethereum blockchain protocol to B2B & mass-market adoption.</em>
         </div>
@@ -380,22 +448,28 @@
           Product: <strong>Pegasys Orchestrate</strong> — Workshops with product managers and tech leads to build an interactive product demo from CLI to GUI.
         </div>
       </div>
+    </div>
 
-      <!-- PLÖY! ──────────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2016 – 2018&nbsp;</span><strong class="company">Plöy!</strong><span class="role"> Co-founder of the interaction designers collective</span>
-        </div>
+    <!-- PLÖY! ──────────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2016 – 2018</span>
+        <div class="employer-title"><strong class="company">Plöy!</strong> <span class="role">Co-founder of the interaction designers collective</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="entrepreneurial">
           Working with various clients on web and graphic design.
         </div>
       </div>
+    </div>
 
-      <!-- NODESIGN ───────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2015&nbsp;</span><strong class="company">Nodesign</strong><span class="role"> UX – UI designer in agency</span>
-        </div>
+    <!-- NODESIGN ───────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2015</span>
+        <div class="employer-title"><strong class="company">Nodesign</strong> <span class="role">UX – UI designer in agency</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="b2c">
           Client: <strong>Parrot</strong> — Proof of concept for the "follow me" functionality of Parrot drones on Apple Watch. Interaction design and UI animations.
         </div>
@@ -406,21 +480,25 @@
           Clients: Cap Digital, Electrosound exhibition.
         </div>
       </div>
+    </div>
 
-      <!-- NOIDD.COM ───────────────────── -->
-      <div class="employer-entry">
-        <div class="employer-header">
-          <span class="year">2014 – 2018&nbsp;</span><strong class="company">Noidd.com</strong><span class="role"> Co-founder & Designer of the Web App</span>
-        </div>
+    <!-- NOIDD.COM ───────────────────── -->
+    <div class="employer-entry">
+      <div class="employer-header">
+        <span class="employer-year">2014 – 2018</span>
+        <div class="employer-title"><strong class="company">Noidd.com</strong> <span class="role">Co-founder & Designer of the Web App</span></div>
+      </div>
+      <div class="employer-body">
         <div class="project-item" data-cats="b2c entrepreneurial">
           Web-app for sharing and discovering music and videos live. Distributed in bars and event venues as a connected jukebox. Experimented with online "battle" events between users.
         </div>
       </div>
-
-      <div class="no-match-msg" id="exp-no-match">
-        Aucune expérience ne correspond à ces filtres.
-      </div>
     </div>
+
+    <div class="no-match-msg" id="exp-no-match" style="margin-left: 136px;">
+      Aucune expérience ne correspond à ces filtres.
+    </div>
+    </div><!-- /experience-entries -->
   </div>
 
   <!-- ════════════ EDUCATION ════════════ -->
