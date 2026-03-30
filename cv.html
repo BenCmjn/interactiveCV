@@ -90,6 +90,17 @@
     }
 
     /* ════════════════════════════════════
+       INTRO
+    ════════════════════════════════════ */
+    .cv-intro {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    /* ════════════════════════════════════
        FILTER BAR
     ════════════════════════════════════ */
     .filter-bar {
@@ -212,6 +223,13 @@
 
     .employer-entry {
       padding-bottom: 22px;
+      opacity: 1;
+      max-height: 2000px;
+      transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        padding-bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: var(--entry-stagger, 0s);
     }
 
     .employer-entry:last-of-type {
@@ -228,6 +246,13 @@
       padding-top: 8px;
       padding-bottom: 8px;
       margin-top: -8px;
+      max-height: 100px;
+      overflow: hidden;
+      transition:
+        max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        padding-top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        padding-bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .employer-year {
@@ -267,6 +292,17 @@
       margin-bottom: 6px;
       font-size: 13px;
       color: var(--body);
+      /* Animated show/hide */
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 500px;
+      overflow: hidden;
+      transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: var(--stagger, 0s);
     }
 
     .project-item:last-child {
@@ -364,8 +400,33 @@
     /* ════════════════════════════════════
        FILTER STATE
     ════════════════════════════════════ */
-    .hidden {
-      display: none !important;
+
+    /* Project items: animated collapse */
+    .project-item.hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      max-height: 0;
+      margin-bottom: 0 !important;
+      pointer-events: none;
+      transition-delay: 0s; /* hide immediately, no stagger */
+    }
+
+    /* Employer entries: animated collapse */
+    .employer-entry.hidden {
+      opacity: 0;
+      max-height: 0;
+      padding-bottom: 0 !important;
+      overflow: hidden;
+      pointer-events: none;
+      transition-delay: 0s;
+    }
+
+    .employer-entry.hidden .employer-header {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      overflow: hidden;
     }
 
     .no-match-msg {
@@ -414,6 +475,11 @@
     </div>
   </header>
 
+  <!-- ════════════ INTRO ════════════ -->
+  <p class="cv-intro"><em>10 years of experience building digital products, from Web3 infrastructure to cloud services. 
+    I specialize in turning complexity into clear, delightful and scalable interfaces, working closely with engineering and product teams. 
+    Comfortable owning end-to-end design in high-autonomy environments.</em></p>
+
   <!-- ════════════ FILTER BAR ════════════ -->
   <div class="filter-bar">
     <span class="filter-label">Filter&thinsp;:</span>
@@ -436,14 +502,16 @@
         <div class="employer-title"><strong class="company">Ledger</strong> <span class="role">Senior Product Designer</span></div>
       </div>
       <div class="employer-body">
+        <div class="project-item" data-cats="design-systeme">
+          <em> Scaled the Ledger design system to Enterprise, bridging the gap between retail and institutional products. Defined design roadmap twice yearly and run weekly design workshops with cross-disciplinary stakeholders.</em></div>
         <div class="project-item" data-cats="b2b">
-          Products: <strong>Ledger Enterprise</strong> — Update and maintain key interactions logics for the Ledger Vault platform. Run bi-weekly design workshops with cross-disciplinary stakeholders.
+          Product: <strong>Ledger Enterprise</strong> — Restructured navigation architecture and core interaction patterns for all features of the Ledger Vault platform. Enabled the dark mode with updated UI components. Re-designed the end-to-end onboarding experience with a brand new hardware device: <strong> Ledger Stax.</strong>
         </div>
         <div class="project-item" data-cats="b2b">
-          Product: <strong>Ledger Tradelink</strong> — Design UX and UI from scratch.
+          Product: <strong>Ledger Tradelink</strong> — Led UX/UI design of Ledger Tradelink from 0 to launch: an off exchange trading network embedded in the self-custody solution. Acted as design point of contact between product, engineering and business managers. 
         </div>
         <div class="project-item" data-cats="b2b">
-          Product: <strong>Vault mobile app</strong> — Design UX and UI from scratch.
+          Product: <strong>Vault mobile app</strong> — Designed end-to-end UX/UI from scratch for an institutional transaction approval app (iOS & Android): biometric auth flows, Bluetooth integration with Ledger Stax device, human-readable transaction display (Clear Signing). Interface shipped close to original design.
         </div>
       </div>
     </div>
@@ -456,7 +524,7 @@
       </div>
       <div class="employer-body">
         <div class="project-item" data-cats="design-systeme">
-          <em>Facilitate the design-system usage (developer experience) across all products and improve end-user experience for cloud services, email management and products bundle buy.</em>
+          <em>Facilitate the design-system usage (better developer experience) across all products and improve end-user experience for cloud services, email management and bundle buy.</em>
         </div>
         <div class="project-item" data-cats="b2c">
           Product: <strong>GandiCloud VPS</strong> — Design the UI for a new product launch, improving a navigation logic used in other Gandi's products. From user on-boarding to billing via SSH Key management. 600 virtual machines created per month since launch.
@@ -586,7 +654,7 @@
     <div class="section-label">Skills</div>
     <div class="section-content">
       <div class="skill-row">
-        <span class="skill-label">Softwares</span>&ensp;Figma Suite, Adobe Suite, Zeplin, Miro, Git (Github, Gitlab), VS Code, P5js, Vibe-Coding, Arduino, Photography, Paper, Pen.
+        <span class="skill-label">Softwares</span>&ensp;Figma Suite, Git (Github, Gitlab), VSCode, P5js, Vibe-Coding (Claude Code, MCPs, V0), Adobe Suite, Zeplin, Miro, Arduino, Photography, Paper, Pen.
       </div>
       <div class="skill-row">
         <span class="skill-label">Soft skills</span>&ensp;Emotional intelligence, workshops facilitation, experience with remote work in the pre-pandemic era.
@@ -624,6 +692,25 @@
           allBtn.classList.remove('active');
           btn.classList.add('active');
           activeFilters.add(filter);
+
+          // All individual filters active → cascade back to "Display all"
+          const categoryBtns = [...filterBtns].filter(b => b.dataset.filter !== 'all');
+          if (activeFilters.size >= categoryBtns.length) {
+            activeFilters.clear();
+
+            // Cascade deactivation: last → first, then land on "Display all"
+            const cascade = [...categoryBtns].reverse();
+            cascade.forEach((b, i) => {
+              setTimeout(() => b.classList.remove('active'), 120 + i * 70);
+            });
+            setTimeout(() => {
+              allBtn.classList.add('active');
+            }, 120 + cascade.length * 70);
+
+            // Items stagger in immediately
+            applyFilters();
+            return;
+          }
         }
       }
 
@@ -634,28 +721,74 @@
   function applyFilters() {
     const filters = [...activeFilters];
 
-    // No active filter → show everything
+    // Reset all stagger delays
+    document.querySelectorAll('.project-item').forEach(item => {
+      item.style.setProperty('--stagger', '0s');
+    });
+
     if (filters.length === 0) {
-      document.querySelectorAll('.project-item, .employer-entry').forEach(el => {
-        el.classList.remove('hidden');
+      // ── Show everything ──
+      // First: reveal any hidden employer entries
+      document.querySelectorAll('.employer-entry.hidden').forEach(entry => {
+        entry.classList.remove('hidden');
       });
+
+      // Force reflow so items inside freshly-revealed entries
+      // can transition from their hidden state
+      document.body.offsetHeight;
+
+      // Then: show project items with stagger
+      let idx = 0;
+      document.querySelectorAll('.project-item.hidden').forEach(item => {
+        item.style.setProperty('--stagger', `${idx * 0.05}s`);
+        idx++;
+        item.classList.remove('hidden');
+      });
+
       noMatchMsg.classList.remove('visible');
       return;
     }
 
-    // Step 1: show/hide individual project items
+    // ── Filtered view ──
+
+    // Build visibility map
+    const shouldShow = new Map();
     document.querySelectorAll('.project-item').forEach(item => {
       const cats = (item.dataset.cats || '').split(' ').filter(Boolean);
-      const matches = cats.length > 0 && cats.some(c => filters.includes(c));
-      item.classList.toggle('hidden', !matches);
+      const match = cats.length > 0 && cats.some(c => filters.includes(c));
+      shouldShow.set(item, match);
     });
 
-    // Step 2: show/hide employer entries based on their visible children
+    // Phase 1: reveal employer entries that will have visible items
+    document.querySelectorAll('.employer-entry').forEach(entry => {
+      const willHaveVisible = [...entry.querySelectorAll('.project-item')]
+        .some(item => shouldShow.get(item));
+      if (willHaveVisible) entry.classList.remove('hidden');
+    });
+
+    // Force reflow between entry reveal and item transitions
+    document.body.offsetHeight;
+
+    // Phase 2: show/hide project items with stagger on appearing items
+    let showIdx = 0;
+    document.querySelectorAll('.project-item').forEach(item => {
+      const show = shouldShow.get(item);
+      const isHidden = item.classList.contains('hidden');
+
+      if (show && isHidden) {
+        // Appearing → stagger delay
+        item.style.setProperty('--stagger', `${showIdx * 0.05}s`);
+        showIdx++;
+      }
+      item.classList.toggle('hidden', !show);
+    });
+
+    // Phase 3: hide employer entries with no visible items
     let anyVisible = false;
     document.querySelectorAll('.employer-entry').forEach(entry => {
       const hasVisible = entry.querySelector('.project-item:not(.hidden)') !== null;
-      entry.classList.toggle('hidden', !hasVisible);
-      if (hasVisible) anyVisible = true;
+      if (!hasVisible) entry.classList.add('hidden');
+      else anyVisible = true;
     });
 
     noMatchMsg.classList.toggle('visible', !anyVisible);
