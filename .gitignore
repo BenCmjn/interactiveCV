@@ -1,0 +1,12 @@
+# System
+.DS_Store
+
+# Claude
+.claude/
+
+# PDFs & docs
+*.pdf
+*.txt
+
+# Archives
+Archives/
