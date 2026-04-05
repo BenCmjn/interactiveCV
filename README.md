@@ -1,8 +1,6 @@
-# Interactive CV — Benjamin Calméjane
+# Interactive CV - Benjamin Calméjane
 
 An interactive résumé built as a single HTML file. No framework, no build step.
-
-**Live:** [ben-calmejane.com](http://www.ben-calmejane.com)
 
 ## Features
 
