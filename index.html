@@ -383,7 +383,24 @@
     /* ════════════════════════════════════
        SKILLS
     ════════════════════════════════════ */
+    .skills-entries {
+      position: relative;
+    }
+
+    .skills-entries::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--orange);
+      pointer-events: none;
+    }
+
     .skill-row {
+      display: flex;
+      align-items: baseline;
       margin-bottom: 7px;
       font-size: 13px;
     }
@@ -395,6 +412,15 @@
     .skill-label {
       color: var(--orange);
       font-weight: 600;
+      width: 108px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 24px;
+    }
+
+    .skill-content {
+      flex: 1;
+      padding-left: 24px;
     }
 
     /* ════════════════════════════════════
@@ -442,6 +468,45 @@
     }
 
     /* ════════════════════════════════════
+       BACK TO TOP
+    ════════════════════════════════════ */
+    .back-to-top {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(calc(100% + 2px));
+      padding: 7px 18px;
+      border: 1.5px solid var(--border);
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
+      background: #fff;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      z-index: 200;
+      opacity: 0;
+      transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.12s,
+        color 0.12s;
+      white-space: nowrap;
+      outline: none;
+    }
+
+    .back-to-top:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .back-to-top.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ════════════════════════════════════
        RESPONSIVE
     ════════════════════════════════════ */
     @media (max-width: 620px) {
@@ -456,7 +521,9 @@
   </style>
 </head>
 <body>
-<div class="cv-page">
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+
+<div class="cv-page" id="top">
 
   <!-- ════════════ HEADER ════════════ -->
   <header class="cv-header">
@@ -652,17 +719,20 @@
   </div>
 
   <!-- ════════════ SKILLS ════════════ -->
-  <div class="cv-section" style="margin-bottom: 0">
-    <div class="section-label">Skills</div>
-    <div class="section-content">
+  <div class="education-section" style="margin-bottom: 0">
+    <div class="section-label-static">Skills</div>
+    <div class="skills-entries">
       <div class="skill-row">
-        <span class="skill-label">Softwares</span>&ensp;I think on paper first, then on Figma Suite, VSCode, P5js, Vibe-Coding (Claude Code, MCPs, V0), Git (Github, Gitlab), Adobe Suite, Zeplin, Miro, Arduino, Photography.
+        <span class="skill-label">Softwares</span>
+        <div class="skill-content">I think on paper first, then on Figma Suite, VSCode, P5js, Vibe-Coding (Claude Code, MCPs, V0), Git (Github, Gitlab), Adobe Suite, Zeplin, Miro, Arduino, Photography.</div>
       </div>
       <div class="skill-row">
-        <span class="skill-label">Soft skills</span>&ensp;Facilitation across multi-disciplinary teams. Comfortable driving design decisions in high-uncertainty environments. Strong written communication for async-first teams.
+        <span class="skill-label">Soft skills</span>
+        <div class="skill-content">Facilitation across multi-disciplinary teams. Comfortable driving design decisions in high-uncertainty environments. Strong written communication for async-first teams.</div>
       </div>
       <div class="skill-row">
-        <span class="skill-label">Languages</span>&ensp;French (native), English (fluent), Spanish (beginner), learning Hebrew
+        <span class="skill-label">Languages</span>
+        <div class="skill-content">French (native), English (fluent), Spanish (beginner), learning Hebrew</div>
       </div>
     </div>
   </div>
@@ -795,6 +865,25 @@
 
     noMatchMsg.classList.toggle('visible', !anyVisible);
   }
+
+  // ── Back to top ──────────────────────────────────────────
+  const backToTopBtn = document.getElementById('back-to-top');
+  const educationSection = document.querySelector('.education-section');
+
+  function updateBackToTop() {
+    const eduTop = educationSection.getBoundingClientRect().top;
+    const atBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 20;
+    const eduVisible = eduTop <= window.innerHeight;
+
+    if (eduVisible && !atBottom) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
 </script>
 </body>
 </html>
