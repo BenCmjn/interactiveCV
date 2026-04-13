@@ -11,4 +11,4 @@ An interactive résumé built as a single HTML file. No framework, no build step
 
 ## Usage
 
-Just open `index.html` in a browser. No server required.
+Browse bencmjn-cv.netlify.app while I'm cooking something on this base...
