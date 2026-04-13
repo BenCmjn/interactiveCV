@@ -232,6 +232,7 @@
       padding-top: 8px;
     }
 
+
     .experience-entries {
       position: relative;
     }
@@ -268,7 +269,7 @@
       display: flex;
       align-items: baseline;
       position: sticky;
-      top: 33px;
+      top: 32px;
       background: #fff;
       z-index: 10;
       padding-top: 8px;
@@ -540,11 +541,14 @@
     @media (max-width: 620px) {
       body { padding: 0; }
       .cv-page { padding: 28px 22px 40px; box-shadow: none; }
-      .cv-header { flex-direction: column; gap: 14px; }
-      .cv-contact { text-align: left; }
       .section-label { width: 80px; font-size: 11.5px; }
       .section-content { padding-left: 18px; }
       .cv-name { font-size: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .cv-header { flex-direction: column; gap: 14px; }
+      .cv-contact { align-self: flex-end; margin-top: 0; }
     }
   </style>
 </head>
