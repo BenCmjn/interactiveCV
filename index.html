@@ -128,6 +128,21 @@
       margin-bottom: 18px;
     }
 
+    .save-pdf-btn {
+      display: block;
+      width: 100%;
+      text-align: right;
+      font-size: 13px;
+      font-style: normal;
+      color: var(--orange);
+      background: none;
+      border: none;
+      padding: 0;
+      margin-top: 6px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
     /* ════════════════════════════════════
        FILTER BAR
     ════════════════════════════════════ */
@@ -550,6 +565,62 @@
       .cv-header { flex-direction: column; gap: 14px; }
       .cv-contact { align-self: flex-end; margin-top: 0; }
     }
+
+    /* ════════════════════════════════════
+       PRINT / SAVE AS PDF
+    ════════════════════════════════════ */
+    @media print {
+      /* Page setup */
+      @page {
+        size: A4 portrait;
+        margin: 12mm 15mm;
+      }
+
+      /* Hide screen-only elements */
+      .save-pdf-btn,
+      .back-to-top,
+      .filter-bar { display: none !important; }
+
+      /* Remove screen chrome */
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .cv-page {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      /* Preserve colors (orange, etc.) */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Reset sticky — incompatible with print */
+      .experience-label,
+      .section-label-static,
+      .employer-header {
+        position: static;
+      }
+
+      /* Page break control */
+      .employer-entry,
+      .education-entry,
+      .skills-entry { break-inside: avoid; }
+
+      .experience-section,
+      .education-section,
+      .skills-section { break-before: auto; }
+
+      .experience-label,
+      .section-label-static { break-after: avoid; }
+
+      /* Remove intro italic margin to tighten layout */
+      .cv-intro { margin-bottom: 10mm; }
+    }
   </style>
 </head>
 <body>
@@ -575,9 +646,12 @@
   </header>
 
   <!-- ════════════ INTRO ════════════ -->
-  <p class="cv-intro"><em>10 years of experience building digital products, from Web3 infrastructure to cloud services. 
-    I specialize in turning complexity into clear, delightful and scalable interfaces, working closely with engineering and product teams. 
-    Comfortable owning end-to-end design in high-autonomy environments.</em></p>
+  <div class="cv-intro">
+    <em>10 years of experience building digital products, from Web3 infrastructure to cloud services.
+    I specialize in turning complexity into clear, delightful and scalable interfaces, working closely with engineering and product teams.
+    Comfortable owning end-to-end design in high-autonomy environments.</em>
+    <button class="save-pdf-btn" onclick="window.print()">Save as pdf</button>
+  </div>
 
   <!-- ════════════ FILTER BAR ════════════ -->
   <div class="filter-bar">
