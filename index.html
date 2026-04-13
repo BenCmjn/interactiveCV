@@ -82,11 +82,39 @@
       font-size: 12.5px;
       color: var(--muted);
       line-height: 1.78;
+      margin-top: 16px;
+    }
+
+    .cv-contact div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
     }
 
     .cv-contact a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .cv-contact a:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--orange);
+      text-underline-offset: 3px;
+    }
+
+    .contact-icon {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      color: var(--orange);
+      stroke: var(--orange);
+      fill: none;
+    }
+
+    .contact-icon.filled {
+      fill: var(--orange);
+      stroke: none;
     }
 
     /* ════════════════════════════════════
@@ -536,9 +564,9 @@
       </div>
     </div>
     <div class="cv-contact">
-      <div><a href="mailto:benjamin.calmejane@gmail.com">benjamin.calmejane@gmail.com</a></div>
-      <div><a href="http://www.linkedin.com/in/ben-calmejane" target="_blank">linkedin.com/in/ben-calmejane</a> </div>
-      <div><a href="http://www.ben-calmejane.com" target="_blank">ben-calmejane.com</a> </div>
+      <div><a href="mailto:benjamin.calmejane@gmail.com">benjamin.calmejane@gmail.com</a><svg class="contact-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+      <div><a href="http://www.linkedin.com/in/ben-calmejane" target="_blank">linkedin.com/in/ben-calmejane</a><svg class="contact-icon filled" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+      <div><a href="http://www.ben-calmejane.com" target="_blank">ben-calmejane.com</a><svg class="contact-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
     </div>
   </header>
 
