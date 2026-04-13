@@ -599,6 +599,29 @@
         print-color-adjust: exact;
       }
 
+      /* Force all filtered-out content to show */
+      .employer-entry.hidden {
+        opacity: 1 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: 22px !important;
+      }
+
+      .employer-entry.hidden .employer-header {
+        max-height: none !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        margin-top: -8px !important;
+        overflow: visible !important;
+      }
+
+      .project-item.hidden {
+        opacity: 1 !important;
+        max-height: none !important;
+        transform: none !important;
+        margin-bottom: revert !important;
+      }
+
       /* Reset sticky — incompatible with print */
       .experience-label,
       .section-label-static,
